@@ -12,7 +12,7 @@ vector<vector<pii> > g;
 void dijkstra(int s, vector<int> &d, vector<int> &p) {
 	int n = g.size();
 	d.assign(n, INF);
-	p.assign(n, INF);
+	p.assign(n, -1);
 
 	d[s] = 0;
 	priority_queue<pii, vector<pii>, greater<pii> > pq;
@@ -27,7 +27,7 @@ void dijkstra(int s, vector<int> &d, vector<int> &p) {
 		for(auto edge : g[v]) {
 			int to = edge.fi;
 			int w = edge.se;
-			
+
 			if(d[v] + w < d[to]) {
 				d[to] = d[v] + w;
 				p[to] = v;
