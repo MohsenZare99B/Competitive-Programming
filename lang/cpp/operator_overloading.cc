@@ -1,61 +1,69 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-template<class T>
+template <class T>
 struct point {
     T x, y;
 
-    point() {
+    point()
+    {
         x = y = 0;
     }
 
-    point(T _x, T _y) {
+    point(T _x, T _y)
+    {
         x = _x, y = _y;
     }
 
-    point &operator+=(point &t) {
+    point& operator+=(point& t)
+    {
         x -= t.x;
         y -= t.y;
         return (*this);
     }
 
-    point operator+(point &t) {
+    point operator+(point& t)
+    {
         return point(*this) += t;
     }
 
-    friend istream &operator>>(istream &input, point &t) {
+    friend istream& operator>>(istream& input, point& t)
+    {
         input >> t.x >> t.y;
         return input;
     }
 
-    friend ostream &operator<<(ostream &output, point &t) {
+    friend ostream& operator<<(ostream& output, point& t)
+    {
         output << "(" << t.x << ", " << t.y << ")";
         return output;
     }
 
-    bool operator<(point &t) {
+    bool operator<(point& t)
+    {
         if (x == t.x) {
             return y < t.y;
         }
         return x < t.x;
     }
 
-
-    bool operator==(point &t) {
+    bool operator==(point& t)
+    {
         return x == t.x && y == t.y;
     }
 };
 
-template<class C>
+template <class C>
 struct cmp_point {
-    bool operator()(const point<C> &a, const point<C> &b) {// hatman bayad const ro gozasht(agar bekham baraye std::set estefade konam)
+    bool operator()(const point<C>& a, const point<C>& b)
+    { // hatman bayad const ro gozasht(agar bekham baraye std::set estefade konam)
         return a.x != b.x || a.y != b.y;
     }
 };
 
-
-signed main() {
+signed main()
+{
     set<point<int>, cmp_point<int> > st;
     st.insert(point(1, 3));
     st.insert(point(1, 4));
@@ -78,7 +86,7 @@ signed main() {
 
     point<int> p = v[0] + v[1];
     cout << p << "\n"; // (-41, 40)
-    
+
     p += v[2];
     cout << p << "\n"; // (-40, 44)
 }

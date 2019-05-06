@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 #define int long long
 #define sz(x) (int)(x.size())
@@ -8,43 +8,44 @@ using namespace std;
 
 const int INF = 1e9;
 
-struct Edge{
-	int w = INF, to = -1;
+struct Edge {
+    int w = INF, to = -1;
 };
 
-vector<vector<int>> adj;
+vector<vector<int> > adj;
 int n, total_weight = 0;
 vector<bool> selected(n, false);
 vector<Edge> min_e(n);
 vector<pii> res;
 
-bool prim() {
-	min_e[0].w = 0;
-	for (int i = 0; i < n; i++) {
-		int v = -1;
-		for (int j = 0; j < n; j++) {
-			if (!selected[j] && (v == -1 || min_e[j].w < min_e[v].w)) {
-				v = j;
-			}
-		}
+bool prim()
+{
+    min_e[0].w = 0;
+    for (int i = 0; i < n; i++) {
+        int v = -1;
+        for (int j = 0; j < n; j++) {
+            if (!selected[j] && (v == -1 || min_e[j].w < min_e[v].w)) {
+                v = j;
+            }
+        }
 
-		if (min_e[v].w == INF) {
-			return false;
-		}
+        if (min_e[v].w == INF) {
+            return false;
+        }
 
-		selected[v] = true;
+        selected[v] = true;
         total_weight += min_e[v].w;
         if (min_e[v].to != -1)
-            res.push_back({v, min_e[v].to});
+            res.push_back({ v, min_e[v].to });
 
         for (int to = 0; to < n; to++) {
             if (adj[v][to] < min_e[to].w)
-                min_e[to] = {adj[v][to], v};
+                min_e[to] = { adj[v][to], v };
         }
-	}
-	return true;
+    }
+    return true;
 }
 
-signed main() {
-	
+signed main()
+{
 }
