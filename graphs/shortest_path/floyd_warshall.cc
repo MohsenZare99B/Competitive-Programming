@@ -9,19 +9,7 @@ const int INF = 1e9;
 int adj[N][N] = {0ll}, dist[N][N];
 int n, m;
 
-void read_input() {
-	cin >> n >> m;
-	for(int i = 0; i < m; i++) {
-		int u, v, w;
-		cin >> u >> v >> w;
-		adj[u][v] = w;
-	}
-}
-
-signed main() {
-
-	read_input();
-
+void floyed() {
 	for(int i = 1; i <= n; i++) {
 		for(int j = 1; j <= n; j++) {
 			if(i == j)  dist[i][j] = 0;
@@ -37,5 +25,8 @@ signed main() {
 			}
 		}
 	}
+}
+
+signed main() {
 
 }
