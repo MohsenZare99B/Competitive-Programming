@@ -18,8 +18,8 @@ struct point {
 
     point& operator+=(point& t)
     {
-        x -= t.x;
-        y -= t.y;
+        x += t.x;
+        y += t.y;
         return (*this);
     }
 
