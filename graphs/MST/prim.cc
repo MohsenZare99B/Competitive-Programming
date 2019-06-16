@@ -12,7 +12,7 @@ struct Edge {
     int w = INF, to = -1;
 };
 
-vector<vector<int> > adj;
+vector<vector<int> > g;
 int n, total_weight = 0;
 vector<bool> selected(n, false);
 vector<Edge> min_e(n);
@@ -39,8 +39,8 @@ bool prim()
             res.push_back({ v, min_e[v].to });
 
         for (int to = 0; to < n; to++) {
-            if (adj[v][to] < min_e[to].w)
-                min_e[to] = { adj[v][to], v };
+            if (g[v][to] < min_e[to].w)
+                min_e[to] = { g[v][to], v };
         }
     }
     return true;
