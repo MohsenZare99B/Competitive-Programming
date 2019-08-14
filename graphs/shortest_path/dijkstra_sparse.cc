@@ -1,11 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define int long long
-#define sz(x) (int)(x.size())
-#define fi first
-#define se second
-#define pii pair<int, int>
-
 const int INF = 1e9;
 
 vector<vector<pii> > g;
@@ -26,17 +18,14 @@ void dijkstra(int s, vector<int>& d, vector<int>& p)
             continue;
 
         for (auto edge : g[v]) {
-            int to = edge.fi;
+            int u = edge.fi;
             int w = edge.se;
 
-            if (d[v] + w < d[to]) {
-                d[to] = d[v] + w;
-                p[to] = v;
-                pq.push({ d[to], to });
+            if (d[v] + w < d[u]) {
+                d[u] = d[v] + w;
+                p[u] = v;
+                pq.push({ d[u], u });
             }
         }
     }
-}
-signed main()
-{
 }
