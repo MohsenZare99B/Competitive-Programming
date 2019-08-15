@@ -1,4 +1,4 @@
-int n, l;
+int n, lift;
 vector<vector<int>> g;
 
 int timer;
@@ -9,7 +9,7 @@ void dfs(int v, int p)
 {
     tin[v] = ++timer;
     up[v][0] = p;
-    for (int i = 1; i <= l; ++i)
+    for (int i = 1; i <= lift; ++i)
         up[v][i] = up[up[v][i-1]][i-1];
 
     for (int u : g[v]) {
@@ -31,7 +31,7 @@ int lca(int u, int v)
         return u;
     if (is_ancestor(v, u))
         return v;
-    for (int i = l; i >= 0; --i) {
+    for (int i = lift; i >= 0; --i) {
         if (!is_ancestor(up[u][i], v))
             u = up[u][i];
     }
@@ -42,7 +42,7 @@ void preprocess(int root) {
     tin.resize(n);
     tout.resize(n);
     timer = 0;
-    l = ceil(log2(n));
-    up.assign(n, vector<int>(l + 1));
+    lift = ceil(log2(n));
+    up.assign(n, vector<int>(lift + 1));
     dfs(root, root);
 }
