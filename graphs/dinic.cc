@@ -4,7 +4,7 @@ using namespace std;
 struct FlowEdge {
     int v, u;
     long long cap, flow = 0;
-    FlowEdge(int v, int u, long long cap) : v(v), u(u), cap(cap) {}
+    FlowEdge(int _v, int _u, long long _cap) : v(_v), u(_u), cap(_cap) {}
 };
 
 struct Dinic {
@@ -16,7 +16,7 @@ struct Dinic {
     vector<int> level, ptr;
     queue<int> q;
 
-    Dinic(int n, int s, int t) : n(n), s(s), t(t) {
+    Dinic(int _n, int _s, int _t) : n(_n), s(_s), t(_t) {
         adj.resize(n);
         level.resize(n);
         ptr.resize(n);
